@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Events | LifeStream</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(140, 3, 3, 0.2);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5757"/>
+                </svg>
+                <span class="text-2xl font-bold text-gray-800">LifeStream</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="/" class="text-gray-700 hover:text-red-600">Home</a>
+                <a href="/donor_register" class="text-gray-700 hover:text-red-600">Donor Register</a>
+                <a href="/recipient" class="text-gray-700 hover:text-red-600">Recipient</a>
+                <a href="/events" class="text-gray-700 hover:text-red-600">Events</a>
+                <a href="/admin_login" class="text-gray-700 hover:text-red-600">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Events Section -->
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-12">Upcoming Blood Donation Events</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for event in events %}
+            <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">{{ event.eventName }}</h3>
+                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                        {{ event.date.strftime('%b %d, %Y') }}
+                    </span>
+                </div>
+                <div class="space-y-3">
+                    <p class="flex items-center text-gray-600">
+                        <i class="fas fa-user-tie w-5 mr-2"></i>
+                        {{ event.organizedBy }}
+                    </p>
+                    <p class="flex items-center text-gray-600">
+                        <i class="fas fa-map-marker-alt w-5 mr-2"></i>
+                        {{ event.location }}
+                    </p>
+                    <p class="flex items-center text-gray-600">
+                        <i class="fas fa-clock w-5 mr-2"></i>
+                        {{ event.time }}
+                    </p>
+                </div>
+                <div class="mt-6">
+                    <a href="#" class="btn-primary text-white px-6 py-2 rounded-lg inline-block text-center w-full">
+                        Register for Event
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if not events %}
+        <div class="text-center py-12">
+            <div class="text-gray-500 text-lg">
+                No upcoming events scheduled at the moment.
+                <br>
+                Please check back later!
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-red-600 to-red-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; 2025 LifeStream Blood Donation System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

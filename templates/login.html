@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeStream | Login</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(140, 3, 3, 0.2);
+        }
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .form-card {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .form-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navbar -->
+    <nav class="navbar fixed w-full z-50 py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5757"/>
+                </svg>
+                <span class="text-2xl font-bold text-gray-800">LifeStream</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="landing.html#features" class="text-gray-700 hover:text-red-600 transition-colors">Features</a>
+                <a href="landing.html#stats" class="text-gray-700 hover:text-red-600 transition-colors">Impact</a>
+                <a href="landing.html#how-it-works" class="text-gray-700 hover:text-red-600 transition-colors">How It Works</a>
+                <a href="landing.html#events" class="text-gray-700 hover:text-red-600 transition-colors">Blood Camps</a>
+            </div>
+            <div>
+                <a href="/loginpage" class="text-gray-700 hover:text-red-600 transition-colors mr-4">Login</a>
+                <a href="/signup" class="btn-primary text-white px-6 py-2 rounded-full font-medium shadow-lg">
+                    Sign Up
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden bg-white w-full py-2 px-4 mt-2">
+            <a href="landing.html#features" class="block py-2 text-gray-700 hover:text-red-600">Features</a>
+            <a href="landing.html#stats" class="block py-2 text-gray-700 hover:text-red-600">Impact</a>
+            <a href="landing.html#how-it-works" class="block py-2 text-gray-700 hover:text-red-600">How It Works</a>
+            <a href="landing.html#events" class="block py-2 text-gray-700 hover:text-red-600">Blood Camps</a>
+            <a href="/signup" class="block py-2 text-gray-700 hover:text-red-600">Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Login Form Section -->
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-md mx-auto form-card bg-white rounded-xl overflow-hidden">
+                <div class="hero-gradient py-8 px-6 text-white text-center">
+                    <h2 class="text-2xl font-bold">Welcome Back</h2>
+                    <p class="mt-2 opacity-90">Login to your LifeStream account</p>
+                </div>
+                <form action="/login" method="POST" class="py-8 px-6 space-y-6">
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input type="email" id="email" name="email" required 
+                                class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                placeholder="your@email.com">
+                        </div>
+                    </div>
+                    
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" id="password" name="password" required 
+                                class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                placeholder="Enter your password">
+                        </div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                            <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-red-600 hover:underline">Forgot password?</a>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit" class="btn-primary w-full text-white py-3 rounded-lg font-medium shadow-lg">
+                            Login
+                        </button>
+                    </div>
+                    
+                    <div class="text-center text-gray-600">
+                        Don't have an account? <a href="/signup" class="text-red-600 font-medium hover:underline">Sign up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5757"/>
+                        </svg>
+                        <span class="text-2xl font-bold">LifeStream</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Connecting blood donors with recipients, making the donation process simple and efficient.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="landing.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="landing.html#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="landing.html#stats" class="text-gray-400 hover:text-white transition-colors">Impact</a></li>
+                        <li><a href="landing.html#how-it-works" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="landing.html#events" class="text-gray-400 hover:text-white transition-colors">Blood Camps</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blood Donation Tips</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Admin Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 LifeStream. All rights reserved. A blood donation management system.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

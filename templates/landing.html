@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeStream | Blood Donation Management System</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(140, 3, 3, 0.2);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navbar -->
+    <nav class="navbar fixed w-full z-50 py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5757"/>
+                </svg>
+                <span class="text-2xl font-bold text-gray-800">LifeStream</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="text-gray-700 hover:text-red-600 transition-colors">Features</a>
+                <a href="#stats" class="text-gray-700 hover:text-red-600 transition-colors">Impact</a>
+                <a href="#how-it-works" class="text-gray-700 hover:text-red-600 transition-colors">How It Works</a>
+                <a href="#events" class="text-gray-700 hover:text-red-600 transition-colors">Blood Camps</a>
+            </div>
+            <div>
+                <div class="flex space-x-4">
+                    <a href="/signup" class="btn-primary text-white px-6 py-2 rounded-full font-medium shadow-lg">
+                        Sign Up
+                    </a>
+                    <a href="/loginpage" class="btn-primary text-white px-6 py-2 rounded-full font-medium shadow-lg">
+                        Login
+                    </a>
+                    <a href="/admin_login" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-full font-medium shadow-lg transition duration-300">
+                        Admin Login
+                    </a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden bg-white w-full py-2 px-4 mt-2">
+            <a href="#features" class="block py-2 text-gray-700 hover:text-red-600">Features</a>
+            <a href="#stats" class="block py-2 text-gray-700 hover:text-red-600">Impact</a>
+            <a href="#how-it-works" class="block py-2 text-gray-700 hover:text-red-600">How It Works</a>
+            <a href="#events" class="block py-2 text-gray-700 hover:text-red-600">Blood Camps</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white min-h-screen flex items-center pt-20 relative">
+        <div class="container mx-auto px-4 py-12 md:py-20 z-10 relative">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-10">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Connect, Donate, <span class="underline decoration-4 decoration-white">Save Lives</span>
+                    </h1>
+                    <p class="text-xl mb-8 opacity-90">
+                        A simple yet powerful blood donation platform that connects donors with recipients, helps manage donation requests, and keeps you informed about upcoming blood donation camps.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+                        <a href="/signup"><button class="bg-white text-red-700 hover:bg-gray-100 px-8 py-3 rounded-full font-medium text-lg transition duration-300 shadow-lg hover:shadow-xl">
+                            Register Now
+                        </button></a>
+                        <a href="/loginpage"><button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-red-700 px-8 py-3 rounded-full font-medium text-lg transition duration-300">
+                            Request Blood
+                        </button></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0">
+                    <img src="https://img.freepik.com/premium-photo/blood-donation-concept-awareness-donation_185193-132027.jpg?ga=GA1.1.884447661.1720511234&semt=ais_hybrid" alt="Blood Donation Illustration" class="rounded-lg shadow-2xl" />
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 z-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,154.7C960,139,1056,149,1152,154.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Upcoming Blood Donation Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {% for event in events %}
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">{{ event.eventName }}</h3>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                            {{ event.date.strftime('%b %d, %Y') }}
+                        </span>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="flex items-center text-gray-600">
+                            <i class="fas fa-user-tie w-5 mr-2"></i>
+                            {{ event.organizedBy }}
+                        </p>
+                        <p class="flex items-center text-gray-600">
+                            <i class="fas fa-map-marker-alt w-5 mr-2"></i>
+                            {{ event.location }}
+                        </p>
+                        <p class="flex items-center text-gray-600">
+                            <i class="fas fa-clock w-5 mr-2"></i>
+                            {{ event.time }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% if events %}
+            <div class="text-center mt-8">
+                <a href="/events" class="btn-primary text-white px-8 py-3 rounded-lg inline-block">
+                    View All Events
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Key Features</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our platform provides a simple yet effective way to connect blood donors with those in need while helping administrators organize donation camps.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                    <div class="bg-red-100 text-red-600 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-plus text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">User Registration</h3>
+                    <p class="text-gray-600">Create your account to access donation features and blood request options.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                    <div class="bg-red-100 text-red-600 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-hand-holding-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Donation Management</h3>
+                    <p class="text-gray-600">Log your blood donations and make them available to those in need.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                    <div class="bg-red-100 text-red-600 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-search-location text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Blood Requests</h3>
+                    <p class="text-gray-600">Easily request blood by selecting from available donations in the system.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                    <div class="bg-red-100 text-red-600 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Donation Camp Events</h3>
+                    <p class="text-gray-600">Stay informed about upcoming blood donation camps added by administrators.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                    <div class="bg-red-100 text-red-600 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-shield text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Admin Dashboard</h3>
+                    <p class="text-gray-600">Dedicated admin interface to manage blood donation camps and system data.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                    <div class="bg-red-100 text-red-600 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile-Friendly</h3>
+                    <p class="text-gray-600">Responsive design that works seamlessly across all your devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Together we're making a difference in the lives of people who need blood transfusions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Stat 1 -->
+                <div class="stat-card bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">500+</div>
+                    <div class="text-gray-600">Registered Users</div>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="stat-card bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">1,000+</div>
+                    <div class="text-gray-600">Donations Made</div>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="stat-card bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">800+</div>
+                    <div class="text-gray-600">Requests Fulfilled</div>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="stat-card bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">20+</div>
+                    <div class="text-gray-600">Donation Camps</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our platform makes it easy to donate blood or request blood when needed.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <!-- Step 1 -->
+                <div class="flex-1 text-center p-6">
+                    <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-2">Register</h3>
+                    <p class="text-gray-600">Create your account with basic information and blood type</p>
+                </div>
+                
+                <!-- Arrow -->
+                <div class="hidden md:flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-2xl text-gray-400"></i>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex-1 text-center p-6">
+                    <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-2">Add Donation</h3>
+                    <p class="text-gray-600">Log your blood donation information in the system</p>
+                </div>
+                
+                <!-- Arrow -->
+                <div class="hidden md:flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-2xl text-gray-400"></i>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="flex-1 text-center p-6">
+                    <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-2">Request Blood</h3>
+                    <p class="text-gray-600">Browse and request available blood donations when needed</p>
+                </div>
+                
+                <!-- Arrow -->
+                <div class="hidden md:flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-2xl text-gray-400"></i>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="flex-1 text-center p-6">
+                    <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                    <h3 class="text-xl font-bold mb-2">Save Lives</h3>
+                    <p class="text-gray-600">Connect donors with recipients to help save lives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 hero-gradient text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Register today to join our platform and help save lives through blood donation.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button class="bg-white text-red-700 hover:bg-gray-100 px-8 py-3 rounded-full font-medium text-lg transition duration-300 shadow-lg hover:shadow-xl">
+                    Register Now
+                </button>
+                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-red-700 px-8 py-3 rounded-full font-medium text-lg transition duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5757"/>
+                        </svg>
+                        <span class="text-2xl font-bold">LifeStream</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Connecting blood donors with recipients, making the donation process simple and efficient.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#stats" class="text-gray-400 hover:text-white transition-colors">Impact</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white transition-colors">Blood Camps</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blood Donation Tips</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Admin Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 LifeStream. All rights reserved. A blood donation management system.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

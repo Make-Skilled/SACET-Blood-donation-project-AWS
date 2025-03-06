@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Donations | Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5757 0%, #8C0303 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(140, 3, 3, 0.2);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5757"/>
+                </svg>
+                <span class="text-2xl font-bold text-gray-800">LifeStream Admin</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="/admin/dashboard" class="text-gray-700 hover:text-red-600">Dashboard</a>
+                <a href="/admin/requests" class="text-gray-700 hover:text-red-600">Requests</a>
+                <a href="/admin/logout"><button class="btn-primary text-white px-6 py-2 rounded-full font-medium shadow-lg">
+                    Logout
+                </button></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold text-gray-900">All Blood Donations</h2>
+    </div>
+
+    <!-- Donations Grid -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for donation in donations %}
+            <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                            {{ donation.bloodGroup }}
+                        </span>
+                        <span class="ml-2 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                            {{ donation.units }} Units
+                        </span>
+                    </div>
+                    <span class="text-sm text-gray-500">
+                        {{ donation.donationDate.strftime('%Y-%m-%d') }}
+                    </span>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900">Donor Information</h3>
+                    <div class="mt-2 space-y-1">
+                        <p class="text-sm text-gray-600">
+                            <i class="fas fa-user mr-2"></i>{{ donation.donorName }}
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            <i class="fas fa-envelope mr-2"></i>{{ donation.address }}
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            <i class="fas fa-phone mr-2"></i>{{ donation.mobileNo }}
+                        </p>
+                    </div>
+                </div>
+
+                
+
+                <div class="border-t pt-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Status</h3>
+                    <div class="flex items-center">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                            {% if donation.status == 'Available' %}
+                                bg-green-100 text-green-800
+                            {% else %}
+                                bg-yellow-100 text-yellow-800
+                            {% endif %}">
+                            {{ donation.quantity }}ml
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

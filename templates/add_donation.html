@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Donation | LifeStream</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">LifeStream - Add Donation</h1>
+            <a href="{{ url_for('dashboard') }}" class="btn-primary text-white px-4 py-2 rounded-lg text-sm shadow-md">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <!-- Donation Form -->
+    <div class="max-w-lg mx-auto mt-10 bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">Enter Donation Details</h2>
+        <form action="{{ url_for('submit_donation') }}" method="POST" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-medium">Donor Name</label>
+                <input type="text" name="donorName" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium">Blood Group</label>
+                <select name="bloodGroup" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <option value="">Select</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium">Amount of Blood (ml)</label>
+                <input type="number" name="quantity" required min="50" step="50" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium">Gender</label>
+                <select name="gender" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium">Age</label>
+                <input type="number" name="age" required min="18" max="65" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium">Address</label>
+                <textarea name="address" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium">Mobile Number</label>
+                <input type="tel" name="mobileNo" required pattern="[0-9]{10}" title="Enter a valid 10-digit mobile number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg font-medium hover:bg-red-700">
+                <i class="fas fa-check-circle"></i> Submit Donation
+            </button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 mt-8 text-center">
+        <p class="text-gray-400">&copy; 2025 LifeStream. All rights reserved.</p>
+    </footer>
+</body>
+</html>
