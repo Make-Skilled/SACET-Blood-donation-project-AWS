@@ -23,8 +23,8 @@ reports = db["reports"]  # New collection for reports
 # AWS S3 setup
 s3_client = boto3.client(
     's3',
-    aws_access_key_id='AKIA5ORNUZXVRSMG7RNU',
-    aws_secret_access_key='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',
+    aws_access_key_id='',
+    aws_secret_access_key='',
     region_name='us-east-1'
 )
 BUCKET_NAME = 'qwertyuioplmkjn.krishna'
