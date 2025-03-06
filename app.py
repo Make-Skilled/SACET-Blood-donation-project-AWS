@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.secret_key = "1234567890"
 
 # MongoDB setup
-client = MongoClient("mongodb+srv://kr4785543:1234567890@cluster0.220yz.mongodb.net/")
+client = MongoClient("mongodb+srv://lakshmitanuja:12thanuja@cluster0.zw9sc.mongodb.net/")
 db = client["bloodDonation"]
 users = db["users"]
 donations = db["donations"]
@@ -630,4 +630,4 @@ def get_reports_by_userid(user_id):
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(port=3000, debug=True)
+    app.run(port=3000, debug=True,host='0.0.0.0')
